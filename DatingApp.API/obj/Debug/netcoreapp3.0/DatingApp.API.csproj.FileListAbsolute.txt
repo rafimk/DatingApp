@@ -52,3 +52,11 @@
 /home/rafi/Studies/DotNet/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.0/runtimes/win-x86/native/e_sqlite3.dll
 /home/rafi/Studies/DotNet/DatingApp/DatingApp.API/obj/Debug/netcoreapp3.0/DatingApp.API.csproj.CopyComplete
 /home/rafi/Studies/DotNet/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.0/Microsoft.EntityFrameworkCore.Design.dll
+/home/rafi/Studies/DotNet/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/rafi/Studies/DotNet/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.Logging.dll
+/home/rafi/Studies/DotNet/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.Tokens.dll
+/home/rafi/Studies/DotNet/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.0/Newtonsoft.Json.dll
+/home/rafi/Studies/DotNet/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.0/System.IdentityModel.Tokens.Jwt.dll
+/home/rafi/Studies/DotNet/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/rafi/Studies/DotNet/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.Protocols.dll
+/home/rafi/Studies/DotNet/DatingApp/DatingApp.API/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
