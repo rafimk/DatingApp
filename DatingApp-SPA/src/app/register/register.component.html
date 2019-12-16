@@ -1,14 +1,95 @@
-<form #registerForm="ngForm" (ngSubmit)="register()">
+<form [formGroup]="registerForm" (ngSubmit)="register()">
   <h2 class="text-center text-primary">Sign Up</h2>
   <hr>
 
   <div class="form-group">
-    <input type="text" class="form-control" required name="username" [(ngModel)]="model.username" placeholder="Username">
+    <label class="control-label" style="margin-right:10px">I am a: </label>
+    <label class="radio-inline">
+      <input class="mr-3" type="radio" value="male" formControlName="gender">Male
+    </label>
+    <label class="radio-inline ml-3">
+      <input class="mr-3" type="radio" value="female" formControlName="gender">Female
+    </label>
   </div>
 
+  <div class="form-group">
+    <input type="text"
+      [ngClass]="{'is-invalid' : f.username.errors && f.username.touched}"
+      class="form-control" 
+      formControlName="username" 
+      placeholder="Username">
+    <div *ngIf="f.username.errors" class="invalid-feedback">
+      <div *ngIf="f.username.errors.required">Userame is required</div>
+    </div>
+  </div>
 
   <div class="form-group">
-    <input type="password" class="form-control" required name="password" [(ngModel)]="model.password" placeholder="Password">
+    <input type="text"
+      [ngClass]="{'is-invalid': f.knownAs.errors && f.knownAs.touched}" 
+      class="form-control"
+      placeholder="Known as" 
+      formControlName="knownAs">
+    <div *ngIf="f.knownAs.errors" class="invalid-feedback">
+      <div *ngIf="f.knownAs.errors.required">Known as is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="text" bsDatepicker [bsConfig]="bsConfig"
+      [ngClass]="{'is-invalid': f.dateOfBirth.errors && f.dateOfBirth.touched}" 
+      class="form-control"
+      placeholder="Date of Birth" 
+      formControlName="dateOfBirth">
+    <div *ngIf="f.dateOfBirth.errors" class="invalid-feedback">
+      <div *ngIf="f.dateOfBirth.errors.required">Date of Birth  is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="text"
+      [ngClass]="{'is-invalid': f.city.errors && f.city.touched}" 
+      class="form-control"
+      placeholder="City" 
+      formControlName="city">
+    <div *ngIf="f.city.errors" class="invalid-feedback">
+      <div *ngIf="f.city.errors.required">City is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="text"
+      [ngClass]="{'is-invalid': f.country.errors && f.country.touched}" 
+      class="form-control"
+      placeholder="Country" 
+      formControlName="country">
+    <div *ngIf="f.country.errors" class="invalid-feedback">
+      <div *ngIf="f.country.errors.required">Country is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="password" 
+      [ngClass]="{'is-invalid' : f.password.errors && f.password.touched}"
+      class="form-control" 
+      formControlName="password" 
+      placeholder="Password">
+      <div *ngIf="f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required && f.password.touched">Password is required</div>
+        <div *ngIf="f.password.errors.minlength && f.password.touched">Password must be at least 4 characters</div>
+        <div *ngIf="f.password.errors.maxlength && f.password.touched">Password canot exceed 8 characters</div>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <input type="password" 
+      [ngClass]="{'is-invalid' : f.confirmPassword.errors && f.confirmPassword.touched}"
+      class="form-control" 
+      formControlName="confirmPassword" 
+      placeholder="Confrim Password">
+      <div *ngIf="f.confirmPassword.errors" class="invalid-feedback">
+        <div *ngIf="f.confirmPassword.errors.required">Passwords is required</div>
+        <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+      </div>
   </div>
 
   <div class="form-group text-center">
@@ -17,3 +98,6 @@
   </div>
   
 </form>
+
+<p>Form value : {{registerForm.value | json }}</p>
+<p>Form status : {{registerForm.status | json }}</p>
