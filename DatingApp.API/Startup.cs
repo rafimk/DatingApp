@@ -27,6 +27,7 @@ namespace DatingApp.API
 {
     public class Startup
     {
+        private readonly string AllowAllOriginsPolicy = "AllowAllOriginsPolicy";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -87,6 +88,8 @@ namespace DatingApp.API
             // app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            // app.UseCors(AllowAllOriginsPolicy);
 
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
