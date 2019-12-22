@@ -15,7 +15,7 @@ export class UserService {
 
   constructor(private http: HttpClient, private alertify: AlertifyService) { }
 
-  getUsers(page?, itemsPerPage?, userParms?): Observable<PaginatedResult<User[]>> {
+  getUsers(page?, itemsPerPage?, userParams?, likesParam?): Observable<PaginatedResult<User[]>> {
     const paginatedResult: PaginatedResult<User[]> = new PaginatedResult<User[]>();
 
     let params = new HttpParams();
@@ -25,12 +25,19 @@ export class UserService {
       params = params.append('pageSize', itemsPerPage);
     }
 
-    if (userParms != null)
-    {
-      params = params.append('minAge', userParms.minAge);
-      params = params.append('maxAge', userParms.maxAge);
-      params = params.append('gender', userParms.gender);
-      params = params.append('orderBy', userParms.orderBy);
+    if (userParams != null) {
+      params = params.append('minAge', userParams.minAge);
+      params = params.append('maxAge', userParams.maxAge);
+      params = params.append('gender', userParams.gender);
+      params = params.append('orderBy', userParams.orderBy);
+    }
+
+    if (likesParam === 'Likers') {
+      params = params.append('likers', 'true');
+    }
+
+    if (likesParam === 'Likees') {
+      params = params.append('likees', 'true');
     }
 
     return this.http.get<User[]>(this.baseUrl + 'users', {observe: 'response', params})
@@ -39,7 +46,6 @@ export class UserService {
           paginatedResult.result = response.body;
           if (response.headers.get('Pagination') != null) {
             paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
-            console.log('Succcess');
           }
           return paginatedResult;
         })
@@ -60,6 +66,10 @@ export class UserService {
 
   deletePhoto(userId: number, id: number) {
     return this.http.delete(this.baseUrl + 'users/' + userId + '/photos/' + id);
+  }
+
+  sendLike(id: number, recipientId: number) {
+    return this.http.post(this.baseUrl + 'users/' + id + '/like/' + recipientId, {});
   }
 
 }
