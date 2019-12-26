@@ -43,6 +43,10 @@ export class CustomHammerConfig extends HammerGestureConfig  {
    };
 }
 
+export function tokenGetter() {
+   return localStorage.getItem('token');
+ }
+
 @NgModule({
    declarations: [
       AppComponent,
@@ -75,9 +79,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
       FileUploadModule,
       JwtModule.forRoot({
          config: {
-            tokenGetter: () => {
-               return localStorage.getItem('token');
-             },
+            tokenGetter,
             whitelistedDomains: ['localhost:4000'],
             blacklistedRoutes: ['localhost:4000/api/auth/']
          }
